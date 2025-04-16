@@ -1,5 +1,5 @@
 ---
-title: "Título del trabajo grupal"
+title: "Percepción de Inseguridad y Participación Comunitaria en Barrios Urbanos"
 subtitle: "R para el análisis de datos"
 author: "Victoria Bermudes y Felipe Cambiazo"
 date: "2025-04-16"
@@ -12,9 +12,11 @@ editor: visual
 
 En muchos barrios urbanos, las personas no solo se enfrentan a delitos reales, sino también a una sensación constante de inseguridad, que a veces no se corresponde con los datos oficiales sobre criminalidad. Esta percepción afecta la vida diaria de los habitantes, limita el uso del espacio público y debilita las relaciones entre vecinos. Ante esta situación, la participación comunitaria aparece como una posible solución para mejorar la convivencia y reforzar la seguridad desde una mirada colectiva. Este trabajo busca analizar cómo la percepción de inseguridad influye en la participación de los vecinos en actividades comunitarias.
 
-## Running Code
+## Variable
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+Variable independiete: Percepcion de inseguridad, La forma en que las personas perciben la inseguridad puede influir en su nivel de participacion comunitaria.
+
+Variable Dependiente: Participacion Comunitaria, Grado en que las personas se involucran en actividades comunitarias en funcion de como perciben la seguridad en su barrio.
 
 ```{r}
 1 + 1
