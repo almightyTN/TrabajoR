@@ -1,0 +1,163 @@
+---
+title: "agregar titulo"
+author: "Felipe Cambiazo, Victoria Bermudes"
+format: html
+editor: visual
+biblioteca: Referencias.trabajo_1.json
+csl: apa.csl
+---
+
+## Titulo
+
+....
+
+## Introducción
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+VARIABLES
+
+Aqui ponemos las variables, de acuerdo con las instrucciones.
+
+```{r librerias, echo=FALSE, warning=FALSE, message=FALSE, collapse=TRUE}
+
+library("pacman")
+install.packages("gt")
+library(gt)
+pacman::p_load(tidyverse,  #manipulacion de datos
+               sjPlot,     #tablas
+               confintr,   #IC
+               gginference,#visualizacion
+               rempsyc,    #reporte
+               broom,      #varios
+               sjmisc,     #para descriptivos
+               knitr,
+               dplyr, ggplot2, haven, janitor)
+
+options(scipen = 999) #para desactivar notacion cientifica
+rm(list = ls()) #para limpiar el entorno de trabajo
+```
+
+A continuación, describiremos las variables necesarias para responder a nuestro objetivo.
+
+## Descripción de variables (cambiar)
+
+En este ejemplo, se seleccionaron las variables:
+
+-   sexo: sexo del encuestado, con nivel de medición nominal
+-   edad: edad del encuestado, con nivel de medición intervalar
+-   nedu: nivel educativo del encuestado, con nivel de medición ordinal
+
+Y las variables del módulo de Salud y Bienestar, referentes a *Estado de ánimo: sintomatología depresiva*, con nivel de medición ordinal, los ítems son los siguientes:
+
+-   Frecuencia: Poco interés o alegría
+-   Frecuencia: Decaimiento, pesadez o desesperanza
+-   Frecuencia: Dificultad para dormir o exceso de sueño
+-   Frecuencia: Cansancio o sensación de falta de energía
+-   Frecuencia: Apetito disminuido o aumentado
+-   Frecuencia: Dificultad para concentrarse
+-   Frecuencia: Mala opinión de sí mismo
+-   Frecuencia: Enlentecimiento físico
+-   Frecuencia: Pensamiento de muerte o dañarse
+
+```{r datos, echo=FALSE, warning=FALSE, message=FALSE} #Preparamos datos}
+lapop_chile_2023 <- read_dta ("input/CHL_2023_LAPOP_AmericasBarometer_v1.0_w.dta")
+
+lapop_limpio <- lapop_chile_2023 %>%
+  mutate(
+    inseguridad = na_if(aoj11, 888888),
+    inseguridad = na_if(inseguridad, 988888),
+    participacion = na_if(cp8, 888888),
+    participacion = na_if(participacion, 988888),
+    confianza_vecinal = na_if(it1, 888888),
+    confianza_vecinal = na_if(confianza_vecinal, 988888),
+    edad = na_if(q2, 999999),
+    genero = case_when(
+      q1tc_r == 1 ~ "Hombre",
+      q1tc_r == 2 ~ "Mujer",
+      q1tc_r == 3 ~ "Otro",
+      TRUE ~ NA_character_
+    )
+  ) %>%
+  filter(!is.na(participacion), !is.na(inseguridad))
+
+#| label: tbl-sjmisc
+#| tbl-cap: "Descriptivos de variables seleccionadas (LAPOP Chile 2023)"
+
+sjmisc::descr(lapop_limpio %>% 
+  select(inseguridad, participacion, confianza_vecinal, edad), 
+  show = c("label", "range", "mean", "sd", "NA.prc", "n")) %>%
+  kable(., "markdown")
+
+
+
+```
+
+```{r}
+{r} #Tabla de frecuencias
+
+lapop_limpio %>%
+  count(participacion) %>%
+  mutate(porcentaje = n / sum(n) * 100)
+```
+
+```{r}
+{r} #Grafico 1: Distribucion de percepción de inseguridad
+lapop_limpio %>%
+  ggplot(aes(x = factor(inseguridad))) +
+  geom_bar(fill = "pink") +
+  labs(
+    title = "Distribución de la percepción de inseguridad",
+    x = "Nivel de inseguridad",
+    y = "Frecuencia"
+  )
+```
+
+```{r}
+{r} #Grafico 2: Participación comunitaria según nivel de inseguridad
+lapop_limpio <- lapop_limpio %>%
+  mutate(participacion = factor(participacion,
+                                levels = c(1, 2, 3, 4),
+                                labels = c("Semanal", "Mensual", "Anual", "Nunca")))
+
+lapop_limpio %>%
+  ggplot(aes(x = factor(inseguridad), fill = participacion)) +
+  geom_bar(position = "fill") +
+  labs(
+    title = "Participación comunitaria según percepción de inseguridad",
+    x = "Percepción de inseguridad",
+    y = "Proporción",
+    fill = "Frecuencia de participación"
+  ) +
+  scale_y_continuous(labels = scales::percent) +
+  scale_fill_manual(values = c("Semanal" = "pink", 
+                               "Mensual" = "lightblue", 
+                               "Anual" = "gray", 
+                               "Nunca" = "orchid"))
+```
+
+# Análisis e Interpetación de resultados
+
+Aqui ponemos el análisis, de acuerdo con la [pauta](https://correlacional.netlify.app/trabajos).
+
+Conclusiones
+
+# Biliografía
+
+Aquí debería aparecer automáticamente la bibliografía que agregamos con Zotero
+
+### ✅ Citar dentro del texto
+
+Una vez que tienes el archivo `referencias.json`, puedes agregar citas en tu texto así:
+
+```         
+markdown
+```
+
+`La confianza en los vecinos ha disminuido en los últimos años (@gonzalez2023).`*Para saber cuál es el “\@gonzalez2023”:*
+
+-   En Zotero, selecciona la referencia.
+
+    Haz clic derecho → **Exportar elemento** → formato **CSL JSON** → abre el `.json` con un editor de texto.
+
+    Ahí verás `"id": "gonzalez2023"` o algo parecido. Ese es el **citekey**.
