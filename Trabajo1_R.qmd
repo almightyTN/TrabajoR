@@ -5,6 +5,7 @@ format: html
 editor: visual
 biblioteca: Referencias.trabajo_1.json
 csl: apa.csl
+bibliography: references.bib
 ---
 
 ## Percepción de Inseguridad y Acción Colectiva en el Contexto Urbano
@@ -162,6 +163,4 @@ Grafico: Participacion comunitaria segun percepcion de inseguridad
 
 # Biliografía
 
-```         
-http://www.scielo.org.co/scielo.php?script=sci_arttext&pid=S0124-05792013000100007
-```
+[@article-journal]
