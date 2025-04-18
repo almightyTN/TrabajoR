@@ -1,5 +1,5 @@
 ---
-title: "agregar titulo"
+title: "Percepción de Inseguridad y Acción Colectiva en el Contexto Urbano"
 author: "Felipe Cambiazo, Victoria Bermudes"
 format: html
 editor: visual
@@ -7,17 +7,25 @@ biblioteca: Referencias.trabajo_1.json
 csl: apa.csl
 ---
 
-## Titulo
-
-....
+## Percepción de Inseguridad y Acción Colectiva en el Contexto Urbano
 
 ## Introducción
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+En muchos barrios urbanos, las personas no solo se enfrentan a delitos reales, sino también a una sensación constante de inseguridad, que a veces no se corresponde con los datos oficiales sobre criminalidad. Esta percepción afecta la vida diaria de las personas, limita el uso del espacio público y debilita las relaciones entre vecinos. Como plantea Kessler(2009, pag169), "Pretende mostrar que, tras la preocupación y el temor, existe cierta lógica que posibilita encontrar la racionalidad entre temor y delito. Para ello, se apoya en el concepto de ‘victimización indirecta’, es decir que, cuando en una sociedad se presentan una gran cantidad de víctimas y la circulación de estos hechos tiene un eco mayor, más personas se consideran en peligro potencial". Ante esta situación, la participación comunitaria aparece como una posible solución para mejorar la convivencia y reforzar la seguridad desde una mirada colectiva. Este trabajo busca analizar cómo la percepción de inseguridad influye en la participación de los vecinos en actividades comunitarias.
 
-VARIABLES
+## Hipotesis
 
-Aqui ponemos las variables, de acuerdo con las instrucciones.
+Las personas que han sido victimas de delitos participan menos en actividades comunitaria. Se espera que a mayor percepcion de inseguridad, menir participacion en actividades comunitarias.
+
+## Variables
+
+**Variable independiente: Percepción de inseguridad**
+
+La percepción de inseguridad hace referencia a la sensación de amenaza o riesgo que experimentan las personas dentro de su entorno cotidiano, basada en la posibilidad de ser víctimas de delitos o hechos violentos. Esta percepción no siempre se basa en hechos concretos, sino que puede estar influenciada por factores como experiencias personales, información transmitida por los medios de comunicación, y las condiciones físicas y sociales del entorno en el que reciden.
+
+**Variable Dependiente: Participacion Comunitaria**
+
+La participacion comunitaria es un accion clave para el fortalecimiento del tejito social que en este caso en partiular son las inseguridades en los barrios urbanos, que en diversos factores como la "inseguridad", ya que el temor o la desconfianza pueden limitar el compromiso ciudadano, o en algunos casos, incentivar la organización colectiva como respuesta a un entorno percibido como amenazante.
 
 ```{r librerias, echo=FALSE, warning=FALSE, message=FALSE, collapse=TRUE}
 
@@ -38,27 +46,25 @@ options(scipen = 999) #para desactivar notacion cientifica
 rm(list = ls()) #para limpiar el entorno de trabajo
 ```
 
-A continuación, describiremos las variables necesarias para responder a nuestro objetivo.
+## Descripción de variables
 
-## Descripción de variables (cambiar)
+En este trabajo, se seleccionaron las siguientes variables:
 
-En este ejemplo, se seleccionaron las variables:
+-   genero: Genero del encuestado, para fines estadisticos "Categorica"
 
--   sexo: sexo del encuestado, con nivel de medición nominal
--   edad: edad del encuestado, con nivel de medición intervalar
--   nedu: nivel educativo del encuestado, con nivel de medición ordinal
+-   edad: edad del encuestado, cuantitativa continua
 
-Y las variables del módulo de Salud y Bienestar, referentes a *Estado de ánimo: sintomatología depresiva*, con nivel de medición ordinal, los ítems son los siguientes:
+    Y las variables de la Percepcion de inseguridad y participacion comunitaria en barrios urbanos: Confianza vecinal, edad, genero, participacion comunitaria, victimizacion
 
--   Frecuencia: Poco interés o alegría
--   Frecuencia: Decaimiento, pesadez o desesperanza
--   Frecuencia: Dificultad para dormir o exceso de sueño
--   Frecuencia: Cansancio o sensación de falta de energía
--   Frecuencia: Apetito disminuido o aumentado
--   Frecuencia: Dificultad para concentrarse
--   Frecuencia: Mala opinión de sí mismo
--   Frecuencia: Enlentecimiento físico
--   Frecuencia: Pensamiento de muerte o dañarse
+-   Frecuencia: Muy confiable, algo confiable, poco confiable, nada confiable
+
+-   Frecuencia: edad de años cumplidos (no menores de 18)
+
+-   Frecuencia: Hombre/masculino, Mujer/femenina, no se identifica como hombre, ni como mujer
+
+-   Frecuencia: Una vez a la semana, una o dos veces al mes, una o dos veces al año, nunca
+
+-   Frecuencia: Muy segura(o), algo segura(o), algo insegura(o), muy insegura(o)
 
 ```{r datos, echo=FALSE, warning=FALSE, message=FALSE} #Preparamos datos}
 lapop_chile_2023 <- read_dta ("input/CHL_2023_LAPOP_AmericasBarometer_v1.0_w.dta")
@@ -138,26 +144,24 @@ lapop_limpio %>%
 
 # Análisis e Interpetación de resultados
 
-Aqui ponemos el análisis, de acuerdo con la [pauta](https://correlacional.netlify.app/trabajos).
+Tabla de Frecuencias:
 
-Conclusiones
+-   Analizando la tabla de frecuencias, se puede observa que el (2.82) representa el promedio de inseguridad. Que el (-0.04) es el resultado de las personas que **No** han sido victimas de robo violento teniendo una percepcion menor que a los que si han sido victimas. A medida que una persona es mayor, su percepción de inseguridad tiende a aumentar un poco, por cada año que una persona envejece, su percepción de inseguridad sube en 0.02 unidades. Finalizando las mujeres tienden a sentir un poco mas de inseguridad que los hombres con una diferencia promedio del (0.04).
+
+Grafico: Distribucion de la percepcion de inseguridad
+
+-   La distribución de la percepción de inseguridad se concentra principalmente en los niveles intermedios (2(600)y 3(500)) , lo que sugiere que la mayoría de las personas perciben un nivel de inseguridad moderado. En cambio, son pocas las personas que sienten muy poca o mucha inseguridad, lo cual indica que no hay una división marcada entre extremos en la forma en que la gente percibe la inseguridad.
+
+Grafico: Participacion comunitaria segun percepcion de inseguridad
+
+-   La percepcion de inseguridad no llega a influir en la participacion comunitaria de las personas, de manera que la mayoria de las personas no participan en actividades comunitarias independientemente de su percepcion ante la seguridad, puede ser mucha o poca, destacando que la gran mayoria de las personas un alrededor del 75% nunca participa en actividades comunitarias sin importar su nivel de percepcion, ya que la frecuencia semanal, mensual y anual de participacion es minima y bastnate parejas entre los niveles de percepcion.
+
+    ### Conclusion
+
+    La percepción de inseguridad se concentra en niveles intermedios, con poca presencia en los extremos, lo que indica una visión general no polarizada. Factores como la edad, el sexo (ser mujer) y haber sido víctima de robo violento se asocian con una mayor percepción de inseguridad, Además, la participación comunitaria es baja en todos los niveles de percepción, lo que sugiere que sentirse más o menos inseguro no influye significativamente en el involucramiento con la comunidad.
 
 # Biliografía
 
-Aquí debería aparecer automáticamente la bibliografía que agregamos con Zotero
-
-### ✅ Citar dentro del texto
-
-Una vez que tienes el archivo `referencias.json`, puedes agregar citas en tu texto así:
-
 ```         
-markdown
+http://www.scielo.org.co/scielo.php?script=sci_arttext&pid=S0124-05792013000100007
 ```
-
-`La confianza en los vecinos ha disminuido en los últimos años (@gonzalez2023).`*Para saber cuál es el “\@gonzalez2023”:*
-
--   En Zotero, selecciona la referencia.
-
-    Haz clic derecho → **Exportar elemento** → formato **CSL JSON** → abre el `.json` con un editor de texto.
-
-    Ahí verás `"id": "gonzalez2023"` o algo parecido. Ese es el **citekey**.
