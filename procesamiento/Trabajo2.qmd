@@ -1,0 +1,285 @@
+---
+title: "Efectos de la discriminacion hacia jovenes en su participacion ciudadana"
+author: Felipe Cambiazo, Victoria Bermudes
+format: html
+editor: visual
+---
+
+# Introducción
+
+En las últimas décadas, diversos estudios han advertido un descenso sostenido en los niveles de participación ciudadana entre jóvenes en Chile. La "Encuesta Jóvenes, Participación y Medios 2024", elaborada por el Centro de Investigación en Comunicación, Literatura y Observación Social (CICLOS UDP) junto a Feedback Research. Este estudio revela que, tras el aumento de la participación juvenil durante el estallido social de 2019 y 2020, los niveles actuales han regresado a cifras similares a las de hace más de una década. Solo 1 de cada 10 jóvenes participa en formas tradicionales de acción política, como manifestaciones o pertenencia a organizaciones sociales o laborales. Además, el 72% de los encuestados se muestra indiferente o poco interesado por los asuntos nacionales, evidenciando una creciente desafección política en este grupo etario (Castillo (2024). A pesar de que este grupo etario representa un segmento clave para la renovación democrática y la construcción de lo común. Desde la sociología, este fenómeno ha sido interpretado no solo como una cuestión generacional o apática, sino como el resultado de condiciones estructurales que afectan la forma en que los/as jóvenes se vinculan con su entorno social y político.
+
+La OCDE (2024), a partir de un estudio revela que las personas que se sienten parte de un grupo discriminado tienden a tener niveles significativamente más bajos de confianza en las instituciones públicas. Por ejemplo, solo una de cada tres personas en Chile (30%) tiene un nivel alto o moderadamente alto de confianza en el gobierno nacional, y un 24% reporta una confianza alta o moderadamente alta en el servicio civil, en comparación con el 39% y el 45%, respectivamente, en promedio entre los países de la OCDE. Estos hallazgos evidencian cómo las experiencias de exclusión y desigualdad afectan la construcción de ciudadanía en Chile, limitando la disposición a participar colectivamente.
+
+Este trabajo busca aportar al estudio de la participacion ciudadana juvenil, entendida como el involucramiento activo en espacios como organizaciones vecinales, centros de estudiantes y movimientos sociales orientados a la defensa de derechos, etc. Este concepto se operacionaliza a través de indicadores de participación formal y organizada en el entorno escolar, comunitario o territorial , integrando elementos de identidad, alteridad y cohesión social, con énfasis en cómo **la discriminación vivida por jóvenes afecta su participación en organizaciones sociales y su vínculo con la comunidad**. Además, se considera como variable explicativa clave la **percepción de discriminación**, definida como la experiencia reportada de trato injusto o excluyente por parte de personas cercanas (compañeros, vecinos, etc) o en función de características personales (género, clase social, orientación sexual, ser estudiante)
+
+Esta investigación tiene como objetivo explorar cómo la experiencia de discriminación que puedan tener los/as jovenes de Chile afecta la su participación ciudadana y el sentido de pertenencia
+
+**Pregunta de investigación:**
+
+¿La experiencia de discriminación de jóvenes afecta a la participación ciudadana y el sentido de pertenencia en jóvenes chilenos?
+
+**Hipótesis:**
+
+Los/as joven que han experimentado situaciones de discriminacion tienden a mostrar una menor participacion en organizaciones sociales y un mejor sentido de pertenencia hacia la comunidad.
+
+Esta hipótesis se basa en el supuesto de que la discriminación debilita los vínculos sociales y limita el desarrollo de una identidad colectiva, lo cual restringe la posibilidad de ejercer plenamente la ciudadanía.
+
+**Fuente de datos:**
+
+La información analizada proviene de la 10ma Encuesta Nacional de Juventudes publicada por el Instituto Nacional de la Juventud, aplicada a jóvenes chilenos, que recoge datos sobre experiencias de discriminación, participación ciudadana, sentido de pertenencia, cohesión social, entre otras. Las variables analizadas incluyen sexo, edad, nivel educacional, tipo de institución educativa, experiencias de discriminación específicas y participación en distintos espacios ciudadanos.
+
+**Variables de control sociodemográficas:**
+
+-   **Edad:** La muestra incluye jóvenes entre 15 y 29 años
+
+-   **Sexo:** Variable dicotómica que distingue entre hombres y mujeres. Se utiliza para observar posibles diferencias de género en los niveles de discriminación o participación ciudadana
+
+-   **Nivel educacional (P14):** Mide el nivel educativo alcanzado por los/as jóvenes. Incluye categorías como educación básica, media, técnico profesional y universitaria.
+
+-   **Tipo de institución (P13):** Indica el tipo de establecimiento educativo al que asiste el/la joven.
+
+### Tabla de descriptivos básicos
+
+-   **`edad_tramos`**:\
+
+    La media es 1.99 y la desviación estándar es 0.83. Esto indica que la mayoría de los/as jóvenes se encuentran en un tramo medio de edad (por ejemplo, si la codificación fuera 1 = 15–18 años, 2 = 19–22 años, etc.). La baja dispersión sugiere relativa homogeneidad en este aspecto.
+
+-   **`sexo_rec`**:\
+
+    La media es 1.55 con una desviación estándar de 0.50, lo que sugiere una distribución relativamente equilibrada entre hombres (1) y mujeres (2), con una ligera mayoría femenina. No hay datos perdidos.
+
+-   **`nivel_edu`**:\
+
+    La media de 2.92 indica un nivel educacional medio-alto (probablemente asociado a educación universitaria o técnica). Sin embargo, **el 53,2% de los casos presenta datos faltantes**, lo cual es importante considerar para los análisis posteriores, especialmente si se requiere controlar por esta variable.
+
+-   **`tipo_institucion`**:\
+
+    Todos los casos presentan el mismo valor (media = 1.00, desviación estándar = 0.00), lo que sugiere que todos/as los/as encuestados/as provienen de un solo tipo de institución (posiblemente pública o subvencionada). Esto limita el análisis comparativo según tipo de institución.
+
+-   **`participacion`**:\
+
+    Con una media de 0.14 y una desviación estándar de 0.35, esta variable refleja un bajo nivel de participación ciudadana entre los/as jóvenes encuestados/as: solo un 14% ha participado en organizaciones sociales, vecinales o estudiantiles.
+
+-   **`discriminacion`**:\
+
+    La media de 0.42 indica que el 42% de los/as jóvenes reportó haber vivido alguna forma de discriminación. Esta variable, de tipo binaria, está bastante balanceada y es clave para los análisis de asociación con la participación y el sentido de pertenencia.
+
+```{r}
+install.packages("pacman")
+library(pacman)
+pacman::p_load(broom, tidyverse, haven, sjmisc, sjlabelled, janitor, GGally, dplyr, sjmisc, car,stargazer, ggplot2,tidyr, psych, corrr, corrplot)
+
+base_jovenes2022 <- read_dta("Desktop/Trabajo 1 opt::Users:victoriabermudesviveros:Desktop/input/Jóvenes/BBDD Respuesta - Encuesta Jóvenes.dta")
+
+proc_base <- base_jovenes2022 %>% 
+  select(
+    SEXO, EDAD, P14, P13,
+    P1_2, P1_10, P2_9,
+    P31_2, P31_3, P31_7,
+    P32_1, P32_4, P32_11, P32_12
+  ) %>%
+  mutate(
+    # Construcción variables binarias
+participacion = if_else(P1_2 == 1 | P1_10 == 1 | P2_9 == 1, 1, 0),
+  disc_interpersonal = if_else(P31_2 == 1 | P31_3 == 1 | P31_7 == 1, 1, 0),
+  disc_estructural = if_else(P32_1 == 1 | P32_4 == 1 | P32_11 == 1 | P32_12 == 1, 1, 0),
+  discriminacion = if_else(disc_interpersonal == 1 | disc_estructural == 1, 1, 0),
+  participacion = tidyr::replace_na(participacion, 0),
+  disc_interpersonal = tidyr::replace_na(disc_interpersonal, 0),
+  disc_estructural = tidyr::replace_na(disc_estructural, 0),
+  discriminacion = tidyr::replace_na(discriminacion, 0)
+) %>%
+  mutate(
+    # Recodificación a factores con etiquetas claras
+    sexo_rec = factor(case_when(
+      SEXO == 1 ~ "Hombre",
+      SEXO == 2 ~ "Mujer",
+      TRUE ~ NA_character_
+    ), levels = c("Hombre", "Mujer")),
+    
+    edad_tramos = factor(case_when(
+      EDAD >= 15 & EDAD <= 19 ~ "15-19",
+      EDAD >= 20 & EDAD <= 24 ~ "20-24",
+      EDAD >= 25 & EDAD <= 29 ~ "25-29",
+      TRUE ~ NA_character_
+    ), levels = c("15-19", "20-24", "25-29")),
+    
+    nivel_edu = factor(case_when(
+      P14 %in% 1:3 ~ "Básica o menos",
+      P14 %in% 4:6 ~ "Media",
+      P14 %in% 7:9 ~ "Superior",
+      TRUE ~ NA_character_
+    ), levels = c("Básica o menos", "Media", "Superior")),
+    
+    tipo_institucion = factor(case_when(
+      P13 %in% 1:2 ~ "Liceo o colegio",
+      P13 %in% 3:5 ~ "Educación superior",
+      TRUE ~ NA_character_
+    ), levels = c("Liceo o colegio", "Educación superior"))
+  )
+
+# Etiquetado de variables para mejor interpretación en tablas y gráficos
+library(sjlabelled)
+proc_base$sexo_rec           <- set_label(proc_base$sexo_rec, "Sexo")
+proc_base$edad_tramos        <- set_label(proc_base$edad_tramos, "Tramos de edad")
+proc_base$nivel_edu          <- set_label(proc_base$nivel_edu, "Nivel educacional")
+proc_base$tipo_institucion   <- set_label(proc_base$tipo_institucion, "Tipo de institución")
+proc_base$participacion      <- set_label(proc_base$participacion, "Participación ciudadana")
+proc_base$disc_interpersonal <- set_label(proc_base$disc_interpersonal, "Discriminación interpersonal")
+proc_base$disc_estructural   <- set_label(proc_base$disc_estructural, "Discriminación estructural")
+proc_base$discriminacion     <- set_label(proc_base$discriminacion, "Discriminación total")
+
+
+# 3. Estadísticos descriptivos ---------------------------------------------
+
+# Estadísticos descriptivos de variables seleccionadas
+descr(proc_base %>% select(
+  edad_tramos, sexo_rec, nivel_edu, tipo_institucion, 
+  participacion, discriminacion
+), show = c("label", "freq", "pct", "mean", "sd", "NA.prc")) %>% 
+  print()
+
+# Tablas de frecuencia porcentual para variables categóricas relevantes
+proc_base %>% tabyl(sexo_rec) %>% adorn_pct_formatting()
+proc_base %>% tabyl(edad_tramos) %>% adorn_pct_formatting()
+proc_base %>% tabyl(nivel_edu) %>% adorn_pct_formatting()
+proc_base %>% tabyl(tipo_institucion) %>% adorn_pct_formatting()
+proc_base %>% tabyl(participacion) %>% adorn_pct_formatting()
+proc_base %>% tabyl(discriminacion) %>% adorn_pct_formatting()
+
+# 4. Visualización descriptiva --------------------------------------------
+
+library(ggplot2)
+
+# Barras participación
+ggplot(proc_base, aes(x = participacion)) +
+  geom_bar(fill = "#0073C2FF") +
+  scale_x_continuous(breaks = c(0,1), labels = c("No participa", "Participa")) +
+  labs(
+    title = "Participación ciudadana en jóvenes",
+    x = "Participación",
+    y = "Frecuencia"
+  ) +
+  theme_minimal()
+
+# Barras discriminación
+ggplot(proc_base, aes(x = discriminacion)) +
+  geom_bar(fill = "#D55E00") +
+  scale_x_continuous(breaks = c(0,1), labels = c("No ha sufrido", "Ha sufrido")) +
+  labs(
+    title = "Experiencia de discriminación en jóvenes",
+    x = "Discriminación",
+    y = "Frecuencia"
+  ) +
+  theme_minimal()
+
+# 5. Análisis de asociación -----------------------------------------------
+
+# Tablas de contingencia participación y discriminación
+tab_part_disc <- proc_base %>% 
+  tabyl(participacion, discriminacion) %>%
+  adorn_totals("row") %>%
+  adorn_percentages("row") %>%
+  adorn_pct_formatting() %>%
+  adorn_ns()
+
+print(tab_part_disc)
+
+# Prueba chi-cuadrado
+chisq_test <- chisq.test(table(proc_base$participacion, proc_base$discriminacion))
+print(chisq_test)
+
+# Matriz de correlaciones variables binarias
+vars_corr <- proc_base %>% select(participacion, discriminacion, disc_interpersonal, disc_estructural)
+cor_mat <- cor(vars_corr)
+print(cor_mat)
+
+# Visualización matriz de correlación
+corrplot(cor_mat, method = "circle", type = "upper", order = "hclust", tl.col = "black")
+
+# Matriz de correlación con GGally
+GGally::ggcorr(vars_corr, label = TRUE)
+
+# 6. Construcción de escala -----------------------------------------------
+
+# Crear escala discriminación sumando ítems
+proc_base <- proc_base %>%
+  mutate(escala_discriminacion = rowSums(select(., P31_2, P31_3, P31_7, P32_1, P32_4, P32_11, P32_12), na.rm = TRUE))
+
+# Etiquetar escala
+proc_base$escala_discriminacion <- set_label(
+  proc_base$escala_discriminacion,
+  "Escala de discriminación (sumatoria)"
+)
+
+# Consistencia interna (alfa de Cronbach)
+items_disc <- proc_base %>% select(P31_2, P31_3, P31_7, P32_1, P32_4, P32_11, P32_12)
+alpha_disc <- psych::alpha(items_disc)
+print(alpha_disc)
+
+# 7. Modelo de regresión lineal --------------------------------------------
+
+# Verificar niveles en variables categóricas
+cat("Niveles por variable categórica:\n")
+cat("Sexo:\n"); print(table(proc_base$sexo_rec, useNA = "ifany"))
+cat("Edad tramos:\n"); print(table(proc_base$edad_tramos, useNA = "ifany"))
+cat("Nivel educativo:\n"); print(table(proc_base$nivel_edu, useNA = "ifany"))
+cat("Tipo de institución:\n"); print(table(proc_base$tipo_institucion, useNA = "ifany"))
+
+# Filtrar variables con más de 1 nivel válido
+vars_categoricas <- list(
+  sexo_rec = proc_base$sexo_rec,
+  edad_tramos = proc_base$edad_tramos,
+  nivel_edu = proc_base$nivel_edu,
+  tipo_institucion = proc_base$tipo_institucion
+)
+
+# Verificar cuántos niveles tiene cada variable y conservar solo las válidas
+vars_validas <- names(vars_categoricas)[sapply(vars_categoricas, function(x) {
+  nlevels(droplevels(x)) > 1
+})]
+
+# Armar fórmula dinámica
+formula_part <- as.formula(
+  paste("participacion ~ escala_discriminacion +", paste(vars_validas, collapse = " + "))
+)
+
+# Ajustar modelo
+modelo_participacion <- lm(formula_part, data = proc_base)
+
+# Resumen del modelo
+summary(modelo_participacion)
+
+
+# 8. Tabla del modelo con stargazer --------------------------------------
+
+stargazer(modelo_participacion, type = "text", title = "Modelo de regresión: Participación ciudadana")
+
+# 9. Visualización de coeficientes del modelo -----------------------------
+
+# Crear tabla de coeficientes con intervalos de confianza
+coef_df <- tidy(modelo_participacion, conf.int = TRUE)
+
+# Recodificar nombres de variables para hacerlos más legibles en el gráfico
+coef_df <- coef_df %>%
+  mutate(term = recode(term,
+    "(Intercept)" = "Intercepto",
+    "sexo_recMujer" = "Sexo: Mujer",
+    "edad_tramos20-24" = "Edad: 20-24",
+    "edad_tramos25-29" = "Edad: 25-29",
+    "nivel_eduMedia" = "Nivel: Media",
+    "nivel_eduSuperior" = "Nivel: Superior",
+    "tipo_institucionEducación superior" = "Educación superior",
+    "escala_discriminacion" = "Escala discriminación"
+  ))
+
+# Gráfico de coeficientes
+ggplot(coef_df %>% filter(term != "Intercepto"), aes(x = estimate, y = reorder(term, estimate))) +
+  geom_point(color = "#0073C2FF", size = 3) +
+  geom_errorbarh(aes(xmin = conf.low, xmax = conf.high), height = 0.2, color = "gray30") +
+  labs(title = "Efectos estimados sobre la participación ciudadana",
+       x = "Estimación (Beta)", y = "") +
+  theme_minimal()
+
+```
