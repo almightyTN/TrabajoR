@@ -1,0 +1,142 @@
+---
+title: "Efectos de la Discriminación hacia Jóvenes en su Participación Escolar"
+author: "Victoria Bermudes Y Felipe Cambiazo"
+format:
+  revealjs: 
+    theme: moon 
+editor: visual
+---
+
+## Tema de investigación
+
+La participación en actividades escolares es un componente crucial para el fortalecimiento del desarrollo estudiantil y social. Sin embargo, diversos factores pueden limitarla, donde la discriminación podria ser uno de los más significativos.
+
+Desde la sociología, este fenómeno ha sido interpretado no solo como una cuestión generacional o apática, sino como el resultado de condiciones estructurales que afectan la forma en que los/as jóvenes se vinculan con su entorno social y escolar en general.
+
+## Nuestro estudio
+
+::: incremental
+-Quisimos explorar los efectos de la discriminación sobre jóvenes de Chile en su participación en actividades educacionales.
+
+-¿La experiencia de discriminación de jóvenes afecta a la participación esducacional en jóvenes chilenos?
+
+-Objetivos: Analizar la relación entre experiencias de discriminación y la participación escolar de jóvenes entre 15 y 18 años en Chile.
+:::
+
+## Analisis
+
+::: incremental
+-Se realizó un análisis descriptivo univariado para observar la distribución de la participación educacinal y la experiencia de discriminación entre jóvenes.
+
+-Se exploró la relación entre discriminación percibida y la participación en actividades educativas, mediante un análisis bivariado con regresión lineal.
+
+-Este enfoque permitió identificar patrones generales y relaciones significativas entre las variables.
+:::
+
+## Datos
+
+La información analizada proviene de la 10.ª Encuesta Nacional de Juventudes (INJUV) publicada por el Instituto Nacional de la Juventud, aplicada a jóvenes chilenos en el año 2022.
+
+## Variables
+
+::: incremental
+-Edad: La muestra incluye jóvenes entre 15 y 18 años 
+
+-Sexo: Variable dicotómica que distingue entre hombres y mujeres. Se utiliza para observar posibles diferencias de género en los niveles de discriminación o participación ciudadana 
+
+-Discriminación educacional: En especifico escolar
+
+-Tipos de discriminación: por clase social (p32_04), por orientacion sexual (p32_11), por físico (p34_14)
+
+-Participación educacional: (p2_2)
+:::
+
+## Resultados 1
+
+::: columns
+::: {.column width="50%"}
+Los principales resultados muestran que una amplia mayoría de los jóvenes declara participar en actividades escolares, mientras que una proporción menor no lo hace. Esta diferencia sugiere que, en general, existe un interés y disposición por involucrarse en asuntos escolares entre los jóvenes.
+:::
+
+::: {.column width="50%"}
+![](participa.png)
+:::
+:::
+
+## Resultados 2
+
+::: columns
+::: {.column width="50%"}
+Y por el otro lado, los resultados indican que una mayor proporción de jóvenes declara haber experimentado situaciones de discriminación, en comparación con quienes señalan no haberlas vivido.
+:::
+
+::: {.column width="50%"}
+![](Discriminacion.png)
+:::
+:::
+
+## Resultados 3: Modelos de regresión
+
+![](modelo.png){width="1342"} ::: :::
+
+## Modelo 1: Discriminación en el colegio
+::: incremental
+-Incluye solo una variable predictora 
+
+-El coeficiente estimado (2.24) sugiere una asociación positiva: quienes reportan mayor discriminación escolar tienden a tener mayor participación educacional.
+
+-El valor p = 0.157 no es estadísticamente significativo al nivel convencional (p \< 0.05). R² es muy bajo (0.005), lo que indica que el modelo explica una proporción mínima de la variabilidad de la participación educacional.
+:::
+
+## Modelo 2: Formas múltiples de discriminación
+
+::: incremental
+-Aquí se agregan: clase social, orientación sexual y físico. 
+
+-Ninguna de estas variables alcanza significación estadística (todos los valores p \> 0.1). 
+
+-El único coeficiente algo cercano a significancia es el de discriminación física (β = 2.84, p = 0.138), lo que sugiere una posible asociación positiva. El R² sube levemente a 0.013, pero sigue siendo muy bajo.
+:::
+
+## Modelo 3: Sexo
+
+::: incremental
+-Sexo como variable de control (edad quedó constante, al ser solo un grupo etario). Aquí el sexo sí resulta significativo (β = 4.14, p = 0.010), indicando que existen diferencias importantes en participación educacional según el sexo de los encuestados. 
+
+-El coeficiente positivo sugiere que, en promedio, uno de los sexos (mujeres, codificado como 1) participa más educacionalmente. La discriminación física también se acerca al umbral de significancia (β = 3.30, p = 0.084). El R² aumenta a 0.031, lo que indica una mejora en el ajuste, aunque sigue siendo modesto.
+:::
+
+## Resultados 4
+
+::: columns
+::: {.column width="50%"}
+la participación educativa predicha (eje Y, de 0.0 a 6.0 unidades). La línea negra representa esta relación positiva: a mayor percepción de discriminación, mayor participación educativa. Esto sugiere que los jóvenes que se sienten más discriminados tienden a involucrarse más en actividades educativas, posiblemente como una forma de respuesta frente a dicha experiencia.
+:::
+
+::: {.column width="40%"}
+![](Rplot.png)
+:::
+:::
+
+## Hipótesis:
+::: incremental
+Los/as joven que han experimentado situaciones de discriminacion tienden a mostrar una menor participacion en actividades escolares.
+
+Esta hipótesis se basa en el supuesto de que la discriminación debilita los vínculos sociales y limita el desarrollo de una identidad colectiva, lo cual restringe la posibilidad de ejercer plenamente la ciudadanía.
+
+-Se rechaza ya que los resultados indican lo contrario.
+:::
+
+## Conclusion
+
+::: incremental
+-Amplia mayoría de jóvenes participa en actividades ciudadanas; contradice la idea de apatía juvenil. 
+
+-Poca parte de esta población ha sufrido discriminación. 
+
+-Quienes han sido discriminados participan más en actividades educativas; se interpreta como forma de respuesta activa o búsqueda de inclusión. 
+
+-Existe por esto, formas de involucramiento.
+
+-Importancia de reconocer estas experiencias.
+:::
